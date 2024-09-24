@@ -15,7 +15,7 @@ class ItemController extends Controller
     }
 
     public function create() {
-        return view('items.edit');
+        return view('items.create');
     }
 
     public function store(Request $request): RedirectResponse {
