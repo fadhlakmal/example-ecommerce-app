@@ -62,7 +62,9 @@ class ItemController extends Controller
     }
 
     public function edit(string $id) {
-        return view('items.edit', compact('id'));
+        $item = Item::findOrFail($id);
+
+        return view('items.edit', compact('item', 'id'));
     }
 
     public function update(Request $request, string $id) {
