@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ItemController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,3 +16,7 @@ Route::delete('/items/{id}/destroy', [ItemController::class, 'destroy'])->name('
 Route::get('/items/{id}/edit', [ItemController::class, 'edit'])->name('items.edit');
 Route::post('/items/{id}/update', [ItemController::class, 'update'])->name('items.update');
 Route::post('/items/{id}/buy', [ItemController::class, 'buy'])->name('items.buy');
+
+Route::get('/cart', [CartController::class, 'viewCart'])->name('cart.view');
+Route::post('/cart/add/{item}', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout');

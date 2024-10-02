@@ -24,18 +24,25 @@
             <p>Rating : {{ $item->rating }}</p>
             <p>Stok : {{ $item->stock }}</p>
         </div>
-        
+
     {{-- <form action="{{ route('items.buy', $item->id) }}" method="POST">
         @csrf
         <button type="submit" {{ $item->stock <= 0 ? 'disabled' : '' }} >Beli</button>
     </form> --}}
-    
+
+    <form action="{{ route('cart.add', $item->id) }}" method="POST">
+        @csrf
+        <label for="quantity">Quantity:</label>
+        <input type="number" name="quantity" value="1" min="1" class="border rounded py-2 px-3 text-gray-700">
+        <button type="submit" class="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">Add to Cart</button>
+    </form>
+
     <div class="flex mt-2">
         <form action="{{ route('items.edit', $item->id) }}" method="GET">
             @csrf
         <button type="submit" class="mr-2 text-center rounded-lg py-2 px-6 text-pink-900 bg-pink-500 hover:bg-pink-700 hover:text-pink-50">Edit Barang</button>
     </form>
-    
+
     <form action="{{ route('items.destroy', $item->id) }}" method="POST" class="flex flex-col">
         @csrf
         @method('DELETE')
